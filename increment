@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+void increment(int* int_pointer);
+
+int main(void)
+{
+	int x = 0;
+	printf("> \n");
+	scanf("%d", &x);
+    increment(&x);
+	printf("x holds %d\n\n", x);
+	increment(&x);
+	printf("x holds %d\n\n", x);
+	increment(&x);
+	printf("x holds %d\n\n", x);
+	return 0;
+}
+
+void increment(int* int_pointer){
+    (*int_pointer)++;
+}
