@@ -1,0 +1,57 @@
+#include <stdio.h>
+#include <ctype.h>
+
+struct Character_Counts
+{
+	int vowels;
+	int consonants;
+	int uppercase;
+	int lowercase;
+	int spaces;
+	int digits;
+};
+
+struct Character_Counts analyse_text(char text[]){
+    struct Character_Counts counts = {0, 0, 0, 0, 0, 0};
+    char *ptr = text;
+    while(*ptr != '\0'){
+        if(isalpha(*ptr)){
+            if(*ptr == 'a' ||*ptr == 'e' ||*ptr == 'i' ||*ptr == 'o' ||*ptr == 'u' ||
+            *ptr == 'A' ||*ptr == 'E' ||*ptr == 'I' ||*ptr == 'O' ||*ptr == 'U'){
+                counts.vowels++;
+            }else{
+                counts.consonants++;
+            }
+            
+            if(isupper(*ptr)){
+                counts.uppercase++;
+            }else if(islower(*ptr)){
+                counts.lowercase++;
+            }
+        }
+        else if(isdigit(*ptr)){
+            counts.digits++;
+        }else if(isspace(*ptr)){
+            counts.spaces++;
+        }
+    ptr++;
+    }
+    return counts;
+}
+void print_counts(struct Character_Counts data){
+    printf("Vowels = %d\n", data.vowels);
+    printf("Consonants = %d\n", data.consonants);
+    printf("Uppercase = %d\n", data.uppercase);
+    printf("Lowercase = %d\n", data.lowercase);
+    printf("Spaces = %d\n", data.spaces);
+    printf("Digits = %d\n", data.digits);
+}
+int main(void)
+{
+	char buffer[80];
+	printf("> ");
+	scanf("%79[^\n]", buffer);
+	struct Character_Counts results = analyse_text(buffer);
+	print_counts(results);
+	return 0;
+}
