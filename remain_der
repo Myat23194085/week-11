@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+void remain_der(int numerator, int denominator, int* left);
+
+int main(void)
+{
+	int fraction_top = 0;
+	printf("Numerator? ");
+	scanf("%d", &fraction_top);
+	int fraction_bottom = 0;
+	printf("Denominator? ");
+	scanf("%d", &fraction_bottom);
+	int left_over = 0;
+	remain_der(fraction_top,fraction_bottom,&left_over);
+	printf("\n");
+	printf("%d over %d, ", fraction_top, fraction_bottom);
+	printf("remainder is %d\n\n", left_over);
+	return 0;
+}
+
+void remain_der(int numerator, int denominator, int* left){
+    *left = numerator % denominator;
+}
