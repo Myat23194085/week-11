@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+void cube(float* number);
+
+int main(void)
+{
+	float x = 0.0f;
+
+	printf("> ");
+	scanf("%f", &x);
+
+	cube(&x);
+	
+	printf("x holds %f\n\n", x);
+
+	return 0;
+}
+
+void cube(float* number){
+    *number = (*number) * (*number) *  (*number);
+    
+}
