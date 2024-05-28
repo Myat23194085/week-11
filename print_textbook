@@ -1,0 +1,34 @@
+#include <stdio.h>
+
+struct Textbook
+{
+    char title[21];
+    int num_of_pages;
+    int num_of_chapters;
+    float weight;
+    int year_of_publication;
+};
+
+void print_textbook(struct Textbook* book){
+    printf("Title: %s\n", book->title);
+    printf("Number of pages: %d pages\n", book->num_of_pages);
+    printf("Number of chapters: %d chapters\n", book->num_of_chapters);
+    printf("Weight: %.2f g\n", book->weight);
+    printf("Year of publication: %d\n", book->year_of_publication);
+}
+
+int main(void)
+{
+    struct Textbook prog_java = {
+        "How to program Java", // Title
+        1350, // Number of pages
+        12, // Number of chapters
+        790.52, // Weight in grams
+        2008 // Year of publication
+    };
+
+    printf("A textbook...\n\n");
+    print_textbook(&prog_java);
+
+	return 0;
+}
