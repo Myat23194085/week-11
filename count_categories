@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <ctype.h>
+
+void count_categories(char* p_cstring, int* p_upper_count, int* p_lower_count, int* p_digit_count){
+    *p_upper_count =0;
+    *p_lower_count= 0;
+    *p_digit_count =0;
+    while(*p_cstring != '\0'){
+        if(isupper(*p_cstring)){
+            (*p_upper_count)++;
+        }else if(islower(*p_cstring)){
+            (*p_lower_count)++;
+        }else if(isdigit(*p_cstring)){
+            (*p_digit_count)++;
+        }
+        p_cstring++;
+    }
+}
+
+int main(void)
+{
+	char buffer1[] = "Hello Programming 1 Students";
+	char buffer2[] = "Learn to program using arrays and pointers!";
+	
+	int upper_count = 0;
+	int lower_count = 0;
+	int digit_count = 0;
+	
+	count_categories(buffer1, &upper_count, &lower_count, &digit_count);
+	printf("[%s] upper: %d, lower: %d, digit: %d\n", buffer1,
+		upper_count, lower_count, digit_count);
+	
+	count_categories(buffer2, &upper_count, &lower_count, &digit_count);
+	printf("[%s] upper: %d, lower: %d, digit: %d\n", buffer2,
+		upper_count, lower_count, digit_count);
+		
+	return 0;
+}
