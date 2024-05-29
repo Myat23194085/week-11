@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <string.h>
+
+void analyse(char *code, int *p_dots, int *p_dashes);
+int main(void)
+{
+	char* morse[] =
+	{
+	"... --- ...", // SOS
+	"-- --- .-. ... .", // MORSE
+	"-.-. --- -.. .", // CODE
+	"-.-. --- -- .--. ..... ----- -----", // COMP500
+	". -. ... . ..... ----- .----" // ENSE501
+	};
+    int num_dots =0; int num_dashes =0;
+    for(int i =0; i < 5; i++){
+        analyse(morse[i], &num_dots, &num_dashes);
+	   printf("%s\ndots:   %d\ndashes: %d\n\n", morse[i], num_dots, num_dashes);
+	}
+	
+	
+	char user_morse[64];
+	// read user input
+	scanf("%63[^\n]", user_morse);
+	analyse(user_morse, &num_dots, &num_dashes);
+	printf("%s\ndots:   %d\ndashes: %d\n\n", user_morse, num_dots, num_dashes);
+	return 0;
+}
+
+void analyse(char* code, int* p_dots, int* p_dashes)
+{
+	*p_dots =0;
+	*p_dashes =0;
+	while(*code != '\0'){
+	    if(*code == '.'){
+	        (*p_dots)++;
+	    }else if(*code == '-'){
+	        (*p_dashes)++;
+	    }
+	    code++;
+	}
+	
+}
