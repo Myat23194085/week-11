@@ -1,0 +1,35 @@
+#include <stdio.h>
+
+int count_evens(int* data_array, int size){
+    int count =0;
+    for(int i=0; i<size; i++){
+        if(data_array[i] %2 == 0){
+            count++;
+        }
+    }
+    return count;
+}
+
+int main(void)
+{
+	int test_data[] = { 5, 3, 2, 4, 1, 8, 10, 2, 7 };
+
+	int result = count_evens(test_data, 9);
+	printf("test_data has %d even numbers.\n", result);
+
+	for (int i = 0; i < 9; i++)
+	{
+		test_data[i]++;
+	}
+	result = count_evens(test_data, 9);
+	printf("test_data has %d even numbers.\n", result);
+
+	for (int i = 0; i < 9; i++)
+	{
+		test_data[i]-=2;
+	}
+	result = count_evens(test_data, 9);
+	printf("test_data has %d even numbers.\n", result);
+
+	return 0;
+}
