@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+struct SoftDrink
+{
+    char name[17];
+    int size;
+    int energy;
+    float caffeine;
+    int max_daily_intake;
+
+};
+
+void print_soft_drink(struct SoftDrink* drink){
+    printf("Name: %s\n", drink->name);
+    printf("Serving size: %d mL\n", drink->size);
+    printf("Energy content: %d kJ\n", drink->energy);
+    printf("Caffeine content: %.6f mg\n", drink->caffeine);
+    printf("Maximum daily intake: %d mL\n", drink->max_daily_intake);
+}
+
+int main(void)
+{
+    struct SoftDrink life_mod = {
+        "Life Modulus",
+         250,
+         529,
+         80.5,
+         500,
+    };
+    printf("A soft drink...\n\n");
+    print_soft_drink(&life_mod);
+	return 0;
+}
