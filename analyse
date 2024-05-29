@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <string.h>
+
+void analyse(char *code, int *p_a_count, int *p_z_count){
+    *p_a_count = 0;
+    *p_z_count = 0;
+    while(*code != '\0'){
+        if(*code == 'Z'){
+            (*p_z_count)++;
+        }else if(*code == 'A'){
+            (*p_a_count)++;
+        }
+        code++;
+    }
+}
+int main(void)
+{
+	char *secret_codes[] = { "AAA ZZZ AAA",	// SOS
+		"ZZ ZZZ AZA AAA A",	// MORSE
+		"ZAZA ZZZ ZAA A",	// CODE
+		"ZAZA ZZZ ZZ AZZA AAAAA ZZZZZ ZZZZZ",	// COMP500
+		"A ZA AAA A AAAAA ZZZZZ AZZZZ"	// ENSE501
+	};
+
+	int num_codes = sizeof(secret_codes)/ sizeof(secret_codes[0]);
+	int a_count =0;
+	int z_count =0;
+	for(int i =0; i<num_codes; i++){
+	    analyse(secret_codes[i], &a_count, &z_count);
+	    printf("%s\n", secret_codes[i]);
+	    printf("A: %d\n", a_count);
+	    printf("Z: %d\n", z_count);
+	    printf("\n");
+	}
+	
+	// The following function tests your code.
+	// Do not modify the following code.
+	test();
+	
+	return 0;
+}
