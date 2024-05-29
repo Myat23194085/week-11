@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+float dot_product(float v1[3], float v2[3]){
+    return (v1[0]*v2[0])+ (v1[1]*v2[1])+(v1[2]*v2[2]);
+}
+
+int main(void)
+{
+	float vec_a[3];
+	float vec_b[3];
+
+	vec_a[0] = 1.5f;
+	vec_a[1] = 2.5f;
+	vec_a[2] = 3.5f;
+	vec_b[0] = 4.0f;
+	vec_b[1] = 5.0f;
+	vec_b[2] = 6.0f;
+
+	printf("%f\n", dot_product(vec_a, vec_b));
+
+	return 0;
+}
